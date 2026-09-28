@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🕌 TARIX — O‘zbekiston tarixiy obidalari</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#07111f;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   RANG-BARANG YOZUVLAR
+========================= */
+
+.rainbow{
+    animation:rainbow 5s linear infinite;
+}
+
+@keyframes rainbow{
+    0%{color:#ff1744}
+    15%{color:#ff9100}
+    30%{color:#ffd600}
+    45%{color:#00e676}
+    60%{color:#00b0ff}
+    75%{color:#7c4dff}
+    90%{color:#e040fb}
+    100%{color:#ff1744}
+}
+
+.gradient-text{
+    background:linear-gradient(
+        90deg,
+        #ff1744,
+        #ff9100,
+        #ffd600,
+        #00e676,
+        #00b0ff,
+        #7c4dff,
+        #e040fb,
+        #ff1744
+    );
+    background-size:400%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:gradient 7s linear infinite;
+}
+
+@keyframes gradient{
+    from{
+        background-position:0%;
+    }
+    to{
+        background-position:400%;
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(4,8,18,.82);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.navbar{
+    max-width:1250px;
+    margin:auto;
+    min-height:72px;
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:1000;
+    letter-spacing:2px;
+}
+
+.theme-btn{
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:12px 17px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    max-width:1250px;
+    margin:auto;
+    min-height:570px;
+    padding:70px 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:10px 15px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:999px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,85px);
+    line-height:.95;
+    font-weight:1000;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.8;
+    color:#e5e7eb;
+    max-width:700px;
+    margin-bottom:30px;
+}
+
+.hero-button{
+    border:0;
+    padding:16px 23px;
+    border-radius:16px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+
+    background:linear-gradient(
+        90deg,
+        #ff1744,
+        #ff9100,
+        #00e676,
+        #00b0ff,
+        #7c4dff
+    );
+
+    background-size:300%;
+    animation:buttonMove 5s linear infinite;
+}
+
+@keyframes buttonMove{
+    from{background-position:0}
+    to{background-position:300%}
+}
+
+.hero-visual{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-card{
+    width:min(100%,500px);
+    height:370px;
+    position:relative;
+    overflow:hidden;
+    border-radius:32px;
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+
+.hero-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,.85)
+    );
+}
+
+.hero-label{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    font-size:28px;
+    font-weight:1000;
+}
+
+/* =========================
+   CATALOG
+========================= */
+
+.catalog{
+    max-width:1250px;
+    margin:auto;
+    padding:60px 20px 90px;
+}
+
+.section-title{
+    font-size:clamp(32px,5vw,52px);
+    font-weight:1000;
+    margin-bottom:12px;
+}
+
+.section-subtitle{
+    color:#cbd5e1;
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.filters{
+    display:grid;
+    grid-template-columns:1fr 250px;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.search,
+.select{
+    width:100%;
+    padding:17px 20px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
+    color:white;
+    outline:none;
+    font-size:16px;
+}
+
+.search::placeholder{
+    color:#cbd5e1;
+}
+
+.select option{
+    background:#111827;
+    color:white;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    overflow:hidden;
+    border-radius:25px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 60px rgba(0,0,0,.4);
+    border-color:rgba(0,176,255,.5);
+}
+
+.card-image{
+    height:235px;
+    position:relative;
+    background:#111827;
+    overflow:hidden;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.card:hover img{
+    transform:scale(1.07);
+}
+
+.badge{
+    position:absolute;
+    left:14px;
+    top:14px;
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(0,0,0,.7);
+    font-size:12px;
+    font-weight:bold;
+}
+
+.card-body{
+    padding:22px;
+}
+
+.card-title{
+    font-size:23px;
+    font-weight:1000;
+    margin-bottom:10px;
+}
+
+.location{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:13px;
+}
+
+.description{
+    color:#d1d5db;
+    line-height:1.65;
+    min-height:78px;
+    margin-bottom:18px;
+}
+
+.details{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:14px;
+    background:rgba(255,255,255,.09);
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:60px;
+    border:1px dashed rgba(255,255,255,.2);
+    border-radius:25px;
+}
+
+.empty.show{
+    display:block;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.8);
+    backdrop-filter:blur(12px);
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(950px,100%);
+    max-height:92vh;
+    overflow:auto;
+    border-radius:28px;
+    background:#0e1525;
+    border:1px solid rgba(255,255,255,.15);
+    position:relative;
+}
+
+.modal-image{
+    width:100%;
+    height:390px;
+    object-fit:cover;
+    display:block;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:rgba(0,0,0,.7);
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    z-index:2;
+}
+
+.modal-body{
+    padding:30px;
+}
+
+.modal-title{
+    font-size:38px;
+    font-weight:1000;
+    margin-bottom:15px;
+}
+
+.meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.meta span{
+    padding:8px 12px;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+    font-size:13px;
+    font-weight:bold;
+}
+
+.info{
+    padding:20px;
+    margin-top:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+}
+
+.info h3{
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.info p{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:35px 20px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+footer p{
+    margin:7px;
+}
+
+/* =========================
+   LIGHT
+========================= */
+
+body.light{
+    background:#f8fafc;
+    color:#111827;
+}
+
+body.light header{
+    background:rgba(255,255,255,.85);
+}
+
+body.light .hero p,
+body.light .section-subtitle,
+body.light .description,
+body.light .info p{
+    color:#374151;
+}
+
+body.light .card{
+    background:white;
+    border-color:#e5e7eb;
+}
+
+body.light .search,
+body.light .select{
+    background:white;
+    color:#111827;
+    border-color:#d1d5db;
+}
+
+body.light .select option{
+    background:white;
+    color:#111827;
+}
+
+body.light .details{
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body.light .modal-box{
+    background:white;
+    color:#111827;
+}
+
+body.light .info{
+    background:#f3f4f6;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:680px){
+
+    .navbar{
+        padding:10px 14px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .hero{
+        padding:50px 15px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-card{
+        height:280px;
+    }
+
+    .catalog{
+        padding:40px 15px 70px;
+    }
+
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        padding:10px;
+    }
+
+    .modal-image{
+        height:260px;
+    }
+
+    .modal-body{
+        padding:20px;
+    }
+
+    .modal-title{
+        font-size:29px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+
+<div class="logo gradient-text">
+🕌 TARIX
+</div>
+
+<button id="themeBtn" class="theme-btn rainbow">
+☀️ Yorug‘ rejim
+</button>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div>
+
+<div class="hero-badge rainbow">
+🇺🇿 O‘ZBEKISTON TARIXIY MEROSI
+</div>
+
+<h1 class="gradient-text">
+O‘ZBEKISTON<br>
+TARIXI
+</h1>
+
+<p class="rainbow">
+O‘zbekistonning qadimiy shaharlari, buyuk hukmdorlar davri
+va tarixiy me’moriy obidalarini bir joyda kashf eting.
+</p>
+
+<button class="hero-button" onclick="goCatalog()">
+🏛️ <span class="rainbow">Obidalarni ko‘rish</span> ↓
+</button>
+
+</div>
+
+
+<div class="hero-visual">
+
+<div class="hero-card">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Registan-Samarkand.jpg"
+alt="Registon"
+>
+
+<div class="hero-overlay"></div>
+
+<div class="hero-label gradient-text">
+Registon maydoni
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<main class="catalog" id="catalog">
+
+<h2 class="section-title gradient-text">
+🏛️ TARIXIY OBIDALAR
+</h2>
+
+<p class="section-subtitle rainbow">
+O‘zbekistonning mashhur tarixiy va me’moriy yodgorliklari.
+Har bir obida haqida batafsil ma’lumotni ko‘rishingiz mumkin.
+</p>
+
+
+<div class="filters">
+
+<input
+id="search"
+class="search rainbow"
+placeholder="🔎 Obida nomini qidiring..."
+>
+
+<select id="region" class="select rainbow">
+
+<option value="all">
+🌍 Barcha viloyatlar
+</option>
+
+<option value="Samarqand">Samarqand</option>
+<option value="Buxoro">Buxoro</option>
+<option value="Xorazm">Xorazm</option>
+<option value="Qashqadaryo">Qashqadaryo</option>
+<option value="Toshkent">Toshkent</option>
+
+</select>
+
+</div>
+
+
+<div id="grid" class="grid"></div>
+
+
+<div id="empty" class="empty">
+
+<div style="font-size:55px">
+🔎
+</div>
+
+<h3 class="gradient-text">
+Obida topilmadi
+</h3>
+
+<p class="rainbow">
+Boshqa qidiruv so‘zini kiriting.
+</p>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<p class="gradient-text">
+🕌 TARIX — O‘zbekiston tarixiy obidalari katalogi
+</p>
+
+<p class="rainbow">
+Tarixni bilish — kelajakni anglashdir.
+</p>
+
+</footer>
+
+
+<div id="modal" class="modal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal()">
+×
+</button>
+
+<img id="modalImage" class="modal-image" alt="">
+
+<div class="modal-body">
+
+<h2 id="modalTitle" class="modal-title gradient-text"></h2>
+
+<div class="meta">
+
+<span id="modalRegion" class="rainbow"></span>
+<span id="modalPeriod" class="rainbow"></span>
+<span id="modalType" class="rainbow"></span>
+
+</div>
+
+
+<div class="info">
+
+<h3 class="gradient-text">
+📜 Tarixi
+</h3>
+
+<p id="modalHistory" class="rainbow"></p>
+
+</div>
+
+
+<div class="info">
+
+<h3 class="gradient-text">
+🏛️ Me’morchiligi
+</h3>
+
+<p id="modalArchitecture" class="rainbow"></p>
+
+</div>
+
+
+<div class="info">
+
+<h3 class="gradient-text">
+💡 Qiziqarli ma’lumot
+</h3>
+
+<p id="modalFacts" class="rainbow"></p>
+
+</div>
+
+
+<div class="info">
+
+<h3 class="gradient-text">
+📍 Joylashuvi
+</h3>
+
+<p id="modalAddress" class="rainbow"></p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const monuments=[
+
+{
+id:1,
+name:"Registon",
+region:"Samarqand",
+period:"XV–XVII asrlar",
+type:"Me’moriy majmua",
+location:"Samarqand shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Registan-Samarkand.jpg",
+
+description:"Samarqandning eng mashhur tarixiy maydonlaridan biri va Temuriylar davri me’morchiligining ramzi.",
+
+history:"Registon Samarqand shahrining tarixiy markazidagi mashhur maydon bo‘lib, uning atrofida Ulug‘bek, Sherdor va Tillakori madrasalari joylashgan.",
+
+architecture:"Ulkan peshtoqlar, gumbazlar, koshinkor bezaklar va geometrik naqshlar majmuaning asosiy xususiyatlaridir.",
+
+facts:"Registon Samarqandning eng taniqli tarixiy ramzlaridan biridir.",
+
+address:"Samarqand shahri"
+},
+
+
+{
+id:2,
+name:"Go‘ri Amir",
+region:"Samarqand",
+period:"XV asr",
+type:"Maqbara",
+location:"Samarqand shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Gur-e%20Amir%20in%20Samarkand%202021.jpg",
+
+description:"Temuriylar sulolasining mashhur maqbarasi va Samarqand me’morchiligining muhim yodgorligi.",
+
+history:"Go‘ri Amir maqbarasi XIV asr oxiri va XV asr boshlarida shakllangan.",
+
+architecture:"Moviy gumbaz, bezakli peshtoq va nafis koshinkor bezaklar bilan ajralib turadi.",
+
+facts:"Go‘ri Amir Temuriylar davri me’morchiligining mashhur namunalaridan biridir.",
+
+address:"Samarqand shahri"
+},
+
+
+{
+id:3,
+name:"Shohi Zinda",
+region:"Samarqand",
+period:"XI–XIX asrlar",
+type:"Me’moriy majmua",
+location:"Samarqand shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Shah-i-Zinda.jpg",
+
+description:"Ko‘plab maqbara va diniy inshootlardan tashkil topgan tarixiy me’moriy majmua.",
+
+history:"Shohi Zinda Samarqandning qadimiy qismlaridan birida joylashgan tarixiy majmuadir.",
+
+architecture:"Moviy va feruza rangdagi koshinlar, peshtoqlar, gumbazlar va geometrik naqshlar bilan bezatilgan.",
+
+facts:"Shohi Zinda Samarqandning eng mashhur tarixiy maskanlaridan biridir.",
+
+address:"Samarqand shahri"
+},
+
+
+{
+id:4,
+name:"Bibixonim masjidi",
+region:"Samarqand",
+period:"XIV–XV asrlar",
+type:"Masjid",
+location:"Samarqand shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Bibi-Khanym%20mosque%20complex%20190.jpg",
+
+description:"Samarqanddagi ulkan tarixiy masjid majmuasi.",
+
+history:"Bibixonim masjid majmuasi Amir Temur davrida barpo etilgan yirik me’moriy inshootlardan biridir.",
+
+architecture:"Ulkan peshtoq, katta gumbaz va bezakli koshinlar majmuaning asosiy xususiyatlaridir.",
+
+facts:"Masjid Samarqand tarixiy markazining muhim qismlaridan biridir.",
+
+address:"Samarqand shahri"
+},
+
+
+{
+id:5,
+name:"Ulug‘bek rasadxonasi",
+region:"Samarqand",
+period:"XV asr",
+type:"Rasadxona",
+location:"Samarqand shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Ulugh%20Beg%20observatory.JPG",
+
+description:"Mirzo Ulug‘bek tomonidan astronomik kuzatuvlar uchun qurilgan tarixiy ilmiy maskan.",
+
+history:"Rasadxona XV asrda Mirzo Ulug‘bek davrida Samarqandda tashkil etilgan.",
+
+architecture:"Rasadxonaning asosiy ilmiy qurilmasi katta meridian yoyiga ega bo‘lgan.",
+
+facts:"Ulug‘bek rasadxonasi o‘rta asrlar astronomiyasi tarixida muhim ahamiyatga ega.",
+
+address:"Samarqand shahri"
+},
+
+
+{
+id:6,
+name:"Ark qal’asi",
+region:"Buxoro",
+period:"Qadimgi davrlardan XX asrgacha",
+type:"Qal’a",
+location:"Buxoro shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Ark.Bukhara.jpg",
+
+description:"Buxoroning tarixiy markazidagi ulkan qal’a va hukmdorlar qarorgohi.",
+
+history:"Ark qal’asi Buxoroning qadimiy tarixiga bog‘liq bo‘lgan yirik mudofaa markazlaridan biridir.",
+
+architecture:"Qal’a baland tepalik ustida joylashgan bo‘lib, ichki hovlilar va tarixiy binolardan tashkil topgan.",
+
+facts:"Ark Buxoro tarixining siyosiy va madaniy hayotida muhim o‘rin egallagan.",
+
+address:"Buxoro shahri"
+},
+
+
+{
+id:7,
+name:"Ichan-Qal’a",
+region:"Xorazm",
+period:"Qadimgi davrlar – XIX asr",
+type:"Tarixiy shahar",
+location:"Xiva shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Itchan%20Kala.jpg",
+
+description:"Xivaning ichki shahri bo‘lib, devorlar bilan o‘ralgan tarixiy me’moriy majmua.",
+
+history:"Ichan-Qal’a Xiva shahrining tarixiy ichki qismi hisoblanadi.",
+
+architecture:"Madrasalar, masjidlar, minoralar, saroylar va tarixiy binolar mavjud.",
+
+facts:"Ichan-Qal’a 1990-yildan UNESCO Butunjahon merosi ro‘yxatida.",
+
+address:"Xiva shahri, Xorazm viloyati"
+},
+
+
+{
+id:8,
+name:"Oqsaroy",
+region:"Qashqadaryo",
+period:"XIV–XV asrlar",
+type:"Saroy",
+location:"Shahrisabz shahri",
+
+/*
+  TEKSHIRILGAN OQSAROY RASMI
+  Wikimedia Commons:
+  Aksaray Shahrisabz.jpg
+*/
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Aksaray%20Shahrisabz.jpg",
+
+description:"Shahrisabzdagi Amir Temur davriga oid ulkan saroy majmuasining saqlanib qolgan qismi.",
+
+history:"Oqsaroy Amir Temur davrida Shahrisabzda qurilgan yirik saroylardan biri bo‘lgan.",
+
+architecture:"Ulkan peshtoq qoldiqlari balandligi va rang-barang koshinkor bezaklari bilan ajralib turadi.",
+
+facts:"Oqsaroy Shahrisabz tarixiy markazining eng mashhur yodgorliklaridan biridir.",
+
+address:"Shahrisabz shahri, Qashqadaryo viloyati"
+},
+
+
+{
+id:9,
+name:"Ko‘kaldosh madrasasi",
+region:"Toshkent",
+period:"XVI asr",
+type:"Madrasa",
+location:"Toshkent shahri",
+
+image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Kukeldash%20Madrasah%20in%20Tashkent.jpg",
+
+description:"Toshkentdagi XVI asrga oid tarixiy madrasa va me’moriy yodgorlik.",
+
+history:"Ko‘kaldosh madrasasi Shayboniylar davri me’moriy merosining Toshkentdagi muhim namunalaridan biridir.",
+
+architecture:"Madrasa katta peshtoq, hovli va an’anaviy Markaziy Osiyo me’morchiligi elementlariga ega.",
+
+facts:"Ko‘kaldosh madrasasi Toshkentning tarixiy markazidagi mashhur obidalardan biridir.",
+
+address:"Toshkent shahri"
+}
+
+];
+
+
+const grid=document.getElementById("grid");
+const search=document.getElementById("search");
+const region=document.getElementById("region");
+const empty=document.getElementById("empty");
+
+const modal=document.getElementById("modal");
+const modalImage=document.getElementById("modalImage");
+const modalTitle=document.getElementById("modalTitle");
+
+const modalRegion=document.getElementById("modalRegion");
+const modalPeriod=document.getElementById("modalPeriod");
+const modalType=document.getElementById("modalType");
+
+const modalHistory=document.getElementById("modalHistory");
+const modalArchitecture=document.getElementById("modalArchitecture");
+const modalFacts=document.getElementById("modalFacts");
+const modalAddress=document.getElementById("modalAddress");
+
+
+function render(){
+
+const q=search.value.toLowerCase().trim();
+
+const selected=region.value;
+
+const list=monuments.filter(item=>{
+
+const text=(
+item.name+
+" "+
+item.region+
+" "+
+item.type+
+" "+
+item.description
+).toLowerCase();
+
+return text.includes(q) &&
+(
+selected==="all" ||
+item.region===selected
+);
+
+});
+
+
+grid.innerHTML="";
+
+
+list.forEach(item=>{
+
+const card=document.createElement("article");
+
+card.className="card";
+
+card.innerHTML=`
+
+<div class="card-image">
+
+<img
+src="${item.image}"
+alt="${item.name}"
+loading="lazy"
+>
+
+<div class="badge rainbow">
+${item.type}
+</div>
+
+</div>
+
+
+<div class="card-body">
+
+<h3 class="card-title gradient-text">
+${item.name}
+</h3>
+
+<div class="location rainbow">
+📍 ${item.location}
+</div>
+
+<p class="description rainbow">
+${item.description}
+</p>
+
+<button
+class="details rainbow"
+onclick="openModal(${item.id})"
+>
+📖 Batafsil ma’lumot
+</button>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+
+empty.classList.toggle(
+"show",
+list.length===0
+);
+
+}
+
+
+function openModal(id){
+
+const item=monuments.find(x=>x.id===id);
+
+if(!item)return;
+
+modalImage.src=item.image;
+modalImage.alt=item.name;
+
+modalTitle.textContent=item.name;
+
+modalRegion.textContent="📍 "+item.region;
+modalPeriod.textContent="📅 "+item.period;
+modalType.textContent="🏛️ "+item.type;
+
+modalHistory.textContent=item.history;
+modalArchitecture.textContent=item.architecture;
+modalFacts.textContent=item.facts;
+modalAddress.textContent=item.address;
+
+modal.classList.add("active");
+
+document.body.style.overflow="hidden";
+
+}
+
+
+function closeModal(){
+
+modal.classList.remove("active");
+
+document.body.style.overflow="";
+
+}
+
+
+modal.addEventListener("click",e=>{
+
+if(e.target===modal){
+closeModal();
+}
+
+});
+
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="Escape"){
+closeModal();
+}
+
+});
+
+
+search.addEventListener("input",render);
+
+region.addEventListener("change",render);
+
+
+function goCatalog(){
+
+document
+.getElementById("catalog")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+   THEME
+========================= */
+
+const themeBtn=document.getElementById("themeBtn");
+
+function updateTheme(){
+
+const light=document.body.classList.contains("light");
+
+themeBtn.textContent=
+light
+?"🌙 Qorong‘i rejim"
+:"☀️ Yorug‘ rejim";
+
+}
+
+themeBtn.addEventListener("click",()=>{
+
+document.body.classList.toggle("light");
+
+localStorage.setItem(
+"tarix-theme",
+document.body.classList.contains("light")
+?"light"
+:"dark"
+);
+
+updateTheme();
+
+});
+
+
+if(
+localStorage.getItem("tarix-theme")==="light"
+){
+
+document.body.classList.add("light");
+
+}
+
+updateTheme();
+
+
+render();
+
+</script>
+
+</body>
+</html>
